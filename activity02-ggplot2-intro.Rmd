@@ -145,7 +145,7 @@ Then, go to GitHub and compare/contrast your `activity02-ggplot2-intro.Rmd` and 
 Which is easier to read?
 Which looks more professional?
 
-**Response**:
+**Response**:It is far easier to read the .md file. It is what would likely be used in a professional report, rather than the "raw" code of the .Rmd file.
 
 
 Now, wouldn't it be nice if we could combine these two plots so that we get the benefits of both!?!
@@ -156,14 +156,17 @@ Try doing the following in the code chunk below with my *hint*:
 - *Add* another geometry layer for the jitterplot.
 
 ```{r box-jitter-combined}
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+  geom_boxplot() + geom_jitter()
 
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) + geom_jitter() + geom_boxplot()
 ```
 
 Play around with doing the jitterplot laid over the boxplot and the boxplot laid over the jitterplot.
 Which do you prefer?
 Why?
 
-**Response**:
+**Response**:I prefer the boxplot with the jitterplot laid over. It doesn't make sense the other way because the boxes cover the majority of the data points.
 
 
 This is getting us closer to one of my favorite plots - the raincloud plot.
@@ -176,14 +179,18 @@ In the code chunk below, explore different methods to try to create this plot.
 A hint, all `geom_*` have a `mapping` argument.
 
 ```{r jitter-colored-only}
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot() + geom_jitter(aes(color = species))
 
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot() + geom_jitter(aes(color = 'plum3'))
 ```
 
 In the above code chunk, continue to play around with having the aesthetics mapped in the different layers.
 For example, how does having all of them mapped in the `ggplot` call compared to having these instead mapped in the `geom_boxplot` layer?
 Comment on what you notice.
 
-**Response**:
+**Response**: There is a lot of flexibility with how you are able to apply colors to variables within the charts.
 
 
 Knit, stage, commit (with a meaningful commit message),and push everything in your **Git** pane to your GitHub repo.
